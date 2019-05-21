@@ -22,9 +22,10 @@ def my_api():
         response_bundle = write(data)
         return Response(status= response_bundle.get("status",""), response=response_bundle.get("response",""))
     if request.method == 'GET':
-        if data.get("action","") == "GET ALL":
+        if data.get("method","") == "GET ALL":
             response_bundle = get_all(data)
-
+            return Response(status=response_bundle.get("status",""),
+                            response=json.dumps(response_bundle.get("response","")))
 
 
 

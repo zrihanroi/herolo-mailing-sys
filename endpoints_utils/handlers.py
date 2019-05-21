@@ -1,4 +1,4 @@
-from db_operations.actions import write_message_to_db
+from db_operations.actions import write_message_to_db, get_all_messages_by_user
 
 def write(data):
     message, subject, writer, receiver = data.get("message", ""), data.get("subject", ""), \
@@ -12,8 +12,9 @@ def write(data):
             raise Exception("No message to send")
         if not subject:
             raise Exception("Subject not specified")
-        # update db here..
+
         write_message_to_db(writer, receiver, subject, message)
+
         bundle = {
             "status" : 200,
             "response": "Message sent successfully"
@@ -26,7 +27,23 @@ def write(data):
     return bundle
 
 def get_all(data):
-    return "test"
+    user = data.get("user", "")
+    try:
+        if not user:
+            raise Exception("No user specified")
+
+        messages = get_all_messages_by_user(user)
+
+        bundle = {
+            "status" : 200,
+            "response": messages
+        }
+    except Exception as error:
+        bundle = {
+            "status" : 400,
+            "response": error.message
+        }
+    return bundle
 
 
 
