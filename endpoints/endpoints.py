@@ -1,7 +1,7 @@
 import json
 from flask import Blueprint, request, Response
 import os
-from endpoints_utils.handlers import write
+from endpoints_utils.handlers import write, get_all
 
 # General vars:
 LOCAL_TEST_API_KEY = "RXEG4tF6LmTpW0Cw8gxq"
@@ -20,6 +20,11 @@ def my_api():
 
     if request.method == 'POST':
         response_bundle = write(data)
+        return Response(status= response_bundle.get("status",""), response=response_bundle.get("response",""))
+    if request.method == 'GET':
+        if data.get("action","") == "GET ALL":
+            response_bundle = get_all(data)
+
 
 
 

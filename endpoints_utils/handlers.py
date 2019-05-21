@@ -1,8 +1,8 @@
-from db_operations.actions import *
+from db_operations.actions import write_message_to_db
 
 def write(data):
     message, subject, writer, receiver = data.get("message", ""), data.get("subject", ""), \
-                                data.get("writer", ""), data.get("receiver", "")
+                                data.get("from", ""), data.get("to", "")
     try:
         if not writer:
             raise Exception("No write specified")
@@ -14,10 +14,32 @@ def write(data):
             raise Exception("Subject not specified")
         # update db here..
         write_message_to_db(writer, receiver, subject, message)
+        bundle = {
+            "status" : 200,
+            "response": "Message sent successfully"
+        }
     except Exception as error:
         bundle = {
             "status" : 400,
             "response": error.message
         }
     return bundle
+
+def get_all(data):
+    return "test"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
