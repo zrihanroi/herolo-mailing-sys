@@ -12,6 +12,7 @@ endpoints = Blueprint('endpoints', __name__)
 
 @endpoints.route('/handle-message' , methods = ['POST' , 'GET' , 'DELETE'])
 def my_api():
+    print "start endpoint"
     data = request.json
     api_key = data.get("api_key","")
     if api_key != API_KEY:
