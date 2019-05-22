@@ -3,10 +3,8 @@ from db_operations.actions import write_message_to_db, get_all_messages_by_user,
 
 
 def write(data):
-    print "inside write"
     message, subject, writer, receiver = data.get("message", ""), data.get("subject", ""), \
                                 data.get("from", ""), data.get("to", "")
-    print "inside write 2"
     try:
         if not writer:
             raise Exception("No write specified")
@@ -16,9 +14,7 @@ def write(data):
             raise Exception("No message to send")
         if not subject:
             raise Exception("Subject not specified")
-        print "here"
         write_message_to_db(writer, receiver, subject, message)
-        print "here1"
         bundle = {
             "status" : 200,
             "response": "Message sent successfully"

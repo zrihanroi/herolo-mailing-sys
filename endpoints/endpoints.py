@@ -18,7 +18,6 @@ def my_api():
         return Response(status=403, response="Please provide a valid api_key parameter.")
 
     if request.method == 'POST':
-        print "inside POST"
         response_bundle = write(data)
         return Response(status= response_bundle.get("status",""), response=response_bundle.get("response",""))
 
