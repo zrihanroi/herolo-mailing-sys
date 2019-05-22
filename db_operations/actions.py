@@ -3,7 +3,6 @@ import pymysql as pymysql
 from urlparse import urlparse
 from datetime import datetime
 
-ENV = os.environ.get("ENV" , "LOCAL") # get the environment.
 DB_URL = os.environ.get("JAWSDB_URL" , "mysql://root:zrihan13@localhost:3306/herolo_mailing_sys") # get the environment.
 db_info = urlparse(DB_URL)
 
