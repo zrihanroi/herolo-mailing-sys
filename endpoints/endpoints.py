@@ -7,7 +7,6 @@ from endpoints_utils.handlers import write, get_messages, get_message_by_id, del
 LOCAL_TEST_API_KEY = "RXEG4tF6LmTpW0Cw8gxq"
 API_KEY = os.environ.get("API_KEY" , LOCAL_TEST_API_KEY)
 
-
 endpoints = Blueprint('endpoints', __name__)
 
 @endpoints.route('/handle-message' , methods = ['POST' , 'GET' , 'DELETE'])
