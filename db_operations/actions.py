@@ -143,4 +143,4 @@ def get_specific_message_by_id(id):
                 "Message ID": result.get("id","")
                 }
 
-    return messages or "Id is not exist"
+    return messages or "Id does not exist"
