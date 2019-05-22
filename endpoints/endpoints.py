@@ -36,8 +36,12 @@ def my_api():
             return Response(status=response_bundle.get("status",""),
                             response=json.dumps(response_bundle.get("response","")))
 
-        if data.get("method","") == "GET BY ID":
+        if data.get("message_id",""):
             response_bundle = get_message_by_id(data)
             return Response(status=response_bundle.get("status",""),
                             response=json.dumps(response_bundle.get("response","")))
 
+        return Response(status=400, response="Unknown action")
+
+    else:
+        return Response(status=400, response="Wrong api key")
