@@ -12,13 +12,13 @@ endpoints = Blueprint('endpoints', __name__)
 
 @endpoints.route('/handle-message' , methods = ['POST' , 'GET' , 'DELETE'])
 def my_api():
-    print "start endpoint"
     data = request.json
     api_key = data.get("api_key","")
     if api_key != API_KEY:
         return Response(status=403, response="Please provide a valid api_key parameter.")
 
     if request.method == 'POST':
+        print "inside POST"
         response_bundle = write(data)
         return Response(status= response_bundle.get("status",""), response=response_bundle.get("response",""))
 
