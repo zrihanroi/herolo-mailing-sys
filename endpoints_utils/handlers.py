@@ -83,6 +83,7 @@ def get_message_by_id(data):
             "status" : 400,
             "response": error.message
         }
+
     return bundle
 
 
