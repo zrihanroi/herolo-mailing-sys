@@ -1,7 +1,6 @@
 from db_operations.actions import write_message_to_db, get_all_messages_by_user, get_specific_message_by_id, \
     delete_message_by_id
 
-
 def write(data):
     message, subject, writer, receiver = data.get("message", ""), data.get("subject", ""), \
                                 data.get("from", ""), data.get("to", "")

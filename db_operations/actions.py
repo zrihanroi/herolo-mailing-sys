@@ -7,7 +7,6 @@ DB_URL = os.environ.get("JAWSDB_URL" , "mysql://root:zrihan13@localhost:3306/her
 db_info = urlparse(DB_URL)
 
 def set_message_opened_by_id(id):
-    creation_time = datetime.now()
     connection = pymysql.connect(host=db_info.hostname,
                              user=db_info.username,
                              password=db_info.password,
