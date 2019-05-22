@@ -14,9 +14,9 @@ def write(data):
             raise Exception("No message to send")
         if not subject:
             raise Exception("Subject not specified")
-
+        print "here"
         write_message_to_db(writer, receiver, subject, message)
-
+        print "here1"
         bundle = {
             "status" : 200,
             "response": "Message sent successfully"
